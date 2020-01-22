@@ -1,17 +1,25 @@
 import os
 
 path = ""
+recentDir = ""
 
 def getPath():
     global path
-    pathSelection = input("Please enter a path (or 1 for previous path): ")
+    global recentDir
+    print("Please enter a path:")
+    print("Hint: press 1 for previous path or 2 for newest directory")
+    pathSelection = input("Path: ")
     if pathSelection == '1':
+        return path
+    elif pathSelection == '2':
+        path = path + "\\" + recentDir
         return path
     return pathSelection
 
 def getDirName():
-    name = input("Please enter name of folders: ")
-    return name
+    global recentDir
+    recentDir = input("Please enter name of folder: ")
+    return recentDir
 
 def getDirDetails():
     global path
@@ -20,6 +28,15 @@ def getDirDetails():
 
     return [path, name]
 
+def makeDir(folder, path, name, single):
+    try:
+        os.mkdir(folder)
+        os.system("cls")
+        print("Successfully created " + name + " folder in directory: " + path)
+        print()
+    except OSError:
+        print("Error creating directory.")
+
 
 def createDir():
     global path
@@ -27,11 +44,16 @@ def createDir():
     path = dirDetails[0]
     name = dirDetails[1]
 
-    path = path + "\\" + name
-    os.mkdir(path)
+    folder = path + "\\" + name
+    try:
+        os.mkdir(folder)
+        os.system("cls")
+        print("Successfully created " + name + ", \'" + name + "\' folder in directory: " + path)
+        print()
+    except OSError:
+        print("Error creating directory.")
 
 def createIterDir():
-    global path
     dirDetails = getDirDetails()
     path = dirDetails[0]
     name = dirDetails[1]
@@ -42,18 +64,21 @@ def createIterDir():
         start = int(input("Please enter a valid starting value: "))
         end = int(input("Please enter a valid ending value: "))
 
-    path = path + "\\" + name
-
     for i in range(start,end+1):
-        folder = path + str(i)
+        folder = path + "\\" + name + str(i)
         try:
             os.mkdir(folder)
+            os.system("cls")
+            print("Successfully created " + str(start) +" to " + str(end) + ", \'" + name + "\' folders in directory: " + path)
+            print()
         except OSError:
             print("Error creating directory.")
 
     return
 
 def run():
+    os.system("cls")
+
     print("Welcome to directory creator!")
     selection = ""
     while selection != 4:
@@ -72,8 +97,6 @@ def run():
             createIterDir()
         elif selection == 3:
             return
-        print()
-
 
 if __name__ == '__main__':
     run()
