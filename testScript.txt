@@ -1,0 +1,28 @@
+D:\UserData\Documents\Uni_Files
+!Year$1
+!FIT1008_Introduction$to$computer$science &W-0-12 !Exam ? !Assessments ? ?
+!FIT1045_Algorithms$and$programming$fundamentals$in$python &W-1-12 !Exam ? !Assessments ? ?
+!FIT1047_Introduction$to$computer$systems,$networks$and$security &W-1-12 !Exam ? !Assessments ? ?
+!FIT1048_Foundations$of$C++ &W-1-12 !Exam ? !Assessments ? ?
+!FIT1049_IT$Professional$practice &W-1-12 !Exam ? !Assessments ? ?
+!FIT1051_Programming$foundations &W-1-12 !Exam ? !Assessments ? ?
+?
+!Year$2
+!FIT2002_IT&project&management &W-1-12 !Exam ? !Assessments ? ?
+!FIT2004_Algorithms$and$data$structures &W-1-12 !Exam ? !Assessments ? ?
+!FIT2014_Theory$of$computation &W-1-12 !Exam ? !Assessments ? ?
+!FIT2081_Mobile$application$development &W-1-12 !Exam ? !Assessments ? ?
+!FIT2093_Introduction$to$cyber$security &W-1-12 !Exam ? !Assessments ? ?
+!FIT2099_Object$oriented$design$and$implementation &W-1-12 !Exam ? !Assessments ? ?
+!FIT2102_Programming$paradigms &W-1-12 !Exam ? !Assessments ? ?
+?
+!Year$3
+!FIT3171_Databases &W-1-12 !Exam ? !Assessments ? ?
+!FIT3080_Intelligent$systems &W-1-12 !Exam ? !Assessments ? ?
+!FIT3077_Software$engineering:$Architecture$and$design &W-1-12 !Exam ? !Assessments ? ?
+!FIT3143_Parallel$computing &W-1-12 !Exam ? !Assessments ? ?
+!FIT3155_Advanced$data$structures$and$algorithms &W-1-12 !Exam ? !Assessments ? ?
+!FIT3168_IT$forensics &W-1-12 !Exam ? !Assessments ? ?
+!FIT3173_Software$security &W-1-12 !Exam ? !Assessments ? ?
+!FIT3161_Project$S1 &W-1-12 !Assessments ? ?
+!FIT3162_Project$S2 &W-1-12 !Assessments ? ?
