@@ -6,7 +6,7 @@
 each directory on a line will go into the parent folder
 ! - represents a parent directory. Any line under this will be a child
     uses: !ParentFolder
-? - represents the closing of a parent directory (used on a single line)
+? - represents the closing of a parent directory (go back up 1 directory)
 & - represents an iteration of numbers
     uses: & X 0 12 - will iterate from 0 to 12 folders starting with X - X0..X12
 $ - represents a space " "

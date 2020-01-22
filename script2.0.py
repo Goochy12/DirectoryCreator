@@ -1,7 +1,24 @@
+# directory creator
+# v 0.2
+# script to create directories
+# format
+"""
+each directory on a line will go into the parent folder
+! - represents a parent directory. Any line under this will be a child
+    uses: !ParentFolder
+? - represents the closing of a parent directory (go back up 1 directory)
+& - represents an iteration of numbers
+    uses: & X 0 12 - will iterate from 0 to 12 folders starting with X - X0..X12
+$ - represents a space " "
+    uses: Year$1 == Year 1
+- - used to separate iterations
+"""
+
 import os
 
 path = ""
 recentDir = ""
+
 
 def getPath():
     global path
@@ -16,10 +33,12 @@ def getPath():
         return path
     return pathSelection
 
+
 def getDirName():
     global recentDir
     recentDir = input("Please enter name of folder: ")
     return recentDir
+
 
 def getDirDetails():
     global path
@@ -27,6 +46,7 @@ def getDirDetails():
     name = getDirName()
 
     return [path, name]
+
 
 def makeDir(folder, path, name, single):
     try:
@@ -53,9 +73,9 @@ def createDir():
     except OSError:
         print("Error creating directory.")
 
+
 def createIterDir():
     dirDetails = getDirDetails()
-    path = dirDetails[0]
     name = dirDetails[1]
 
     start = int(input("Please enter starting value: "))
@@ -64,39 +84,94 @@ def createIterDir():
         start = int(input("Please enter a valid starting value: "))
         end = int(input("Please enter a valid ending value: "))
 
-    for i in range(start,end+1):
+    iterateDir(start,end,name)
+
+    return
+
+def iterateDir(start, end, name):
+    global path
+    for i in range(start, end + 1):
         folder = path + "\\" + name + str(i)
         try:
             os.mkdir(folder)
             os.system("cls")
-            print("Successfully created " + str(start) +" to " + str(end) + ", \'" + name + "\' folders in directory: " + path)
+            print("Successfully created " + str(start) + " to " + str(
+                end) + ", \'" + name + "\' folders in directory: " + path)
             print()
         except OSError:
             print("Error creating directory.")
 
+
+def runScript():
+    scriptPath = input("Please enter the path to the script: ")
+
+    with open(scriptPath) as file:
+        path = file.readline()
+        line = file.readline()
+
+        while line:
+            parts = line.split(" ")
+            for eachPart in parts:
+                # iterate over each part of the line separated by spaces
+                if eachPart[0] == "!":
+                    # what follows is a parent directory
+                    directoryName = eachPart[1:]
+                    try:
+                        path = path + "\\" + directoryName
+                        os.mkdir(path)
+                    except OSError:
+                        print("error")
+
+                if eachPart == "?":
+                    # close the parent directory
+                    path = path.split("\\")
+                    path.pop()
+                    path = "\\".join(path)
+                    return
+                if eachPart == "&":
+                    # iterate to create new directories
+                    iterateDir()
+                    return
+                if eachPart != " ":
+                    # directory name
+                    return
+            line = file.readline()
+
+# D:\UserData\Documents\repositries\DirectoryCreator\testScript.txt
+
     return
+
+def openParameterFile(scriptPath):
+    file = open(scriptPath, 'r+')
+    return file.readlines()
+
 
 def run():
     os.system("cls")
 
     print("Welcome to directory creator!")
     selection = ""
+
     while selection != 4:
         print("Please select one of the following options:")
         print("\t1. Create single directory.")
         print("\t2. Create iteration of directories.")
         print("\t3. Use a pre defined script.")
         print("\t4. Exit.")
+
         selection = int(input("Option: "))
+
         while selection < 1 or selection > 4:
             print("Please make a valid selection.")
             selection = int(input())
+
         if selection == 1:
             createDir()
         elif selection == 2:
             createIterDir()
         elif selection == 3:
-            return
+            runScript()
+
 
 if __name__ == '__main__':
     run()
