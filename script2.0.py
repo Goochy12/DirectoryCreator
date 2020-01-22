@@ -1,5 +1,5 @@
 # directory creator
-# v 0.2
+# v 1.0
 # script to create directories
 # format
 """
@@ -75,7 +75,9 @@ def createDir():
 
 
 def createIterDir():
+    global path
     dirDetails = getDirDetails()
+    path = dirDetails[0]
     name = dirDetails[1]
 
     start = int(input("Please enter starting value: "))
@@ -84,22 +86,20 @@ def createIterDir():
         start = int(input("Please enter a valid starting value: "))
         end = int(input("Please enter a valid ending value: "))
 
-    iterateDir(start,end,name)
+    iterateDir(start,end,name, path)
 
     return
 
-def iterateDir(start, end, name):
-    global path
+def iterateDir(start, end, name, path):
     for i in range(start, end + 1):
         folder = path + "\\" + name + str(i)
         try:
             os.mkdir(folder)
-            os.system("cls")
-            print("Successfully created " + str(start) + " to " + str(
-                end) + ", \'" + name + "\' folders in directory: " + path)
-            print()
+            print("\nSuccessfully created " + str(start) + " to " + str(
+                end) + ", \'" + name + "\' folders in directory: " + path + "\n")
         except OSError:
             print("Error creating directory.")
+    return
 
 
 def runScript():
@@ -107,7 +107,9 @@ def runScript():
 
     with open(scriptPath) as file:
         path = file.readline()
+        path = path.strip("\n")
         line = file.readline()
+        line = line.strip("\n")
 
         while line:
             parts = line.split(" ")
@@ -115,27 +117,37 @@ def runScript():
                 # iterate over each part of the line separated by spaces
                 if eachPart[0] == "!":
                     # what follows is a parent directory
+
                     directoryName = eachPart[1:]
+
+                    directoryName = directoryName.replace("$", " ")
+
                     try:
                         path = path + "\\" + directoryName
                         os.mkdir(path)
                     except OSError:
                         print("error")
 
-                if eachPart == "?":
+                elif eachPart == "?":
                     # close the parent directory
                     path = path.split("\\")
                     path.pop()
                     path = "\\".join(path)
-                    return
-                if eachPart == "&":
+
+                elif eachPart[0] == "&":
                     # iterate to create new directories
-                    iterateDir()
-                    return
-                if eachPart != " ":
-                    # directory name
-                    return
+                    params = eachPart[1:].split("-")
+
+                    name = params[0]
+                    name = name.replace("$", " ")
+
+                    start = int(params[1])
+                    end = int(params[2])
+
+                    iterateDir(start, end, name, path)
+
             line = file.readline()
+            line = line.strip("\n")
 
 # D:\UserData\Documents\repositries\DirectoryCreator\testScript.txt
 
