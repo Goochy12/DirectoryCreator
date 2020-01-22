@@ -88,7 +88,7 @@ def run():
         print("\t3. Use a pre defined script.")
         print("\t4. Exit.")
         selection = int(input("Option: "))
-        while selection < 1 or selection > 3:
+        while selection < 1 or selection > 4:
             print("Please make a valid selection.")
             selection = int(input())
         if selection == 1:
