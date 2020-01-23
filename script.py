@@ -33,6 +33,7 @@ def getPath():
     pathSelection = ""
     while pathSelection == "":
         # iterate while a path has not been entered
+        print()
         print("Please enter a path:")  # print path message
         if path != "" and recentDir != "":
             # check if a path and recent directory have been created
@@ -103,10 +104,13 @@ def createDir(folderDir, name, origPath):
     """
     try:
         os.mkdir(folderDir)  # try to create the folder
+        print()
         print("Successfully created " + name + ", \'" + name + "\' folder in directory: " + origPath)
         print()  # print a success message
     except OSError:
+        print()
         print("Error creating directory.")  # print an error message
+        print()
 
 
 def initIterDir():
@@ -146,11 +150,15 @@ def createIterateDir(start, end, name, path):
         folder = path + "\\" + name + str(i)  # create the path
         try:
             os.mkdir(folder)  # try to make the folder
+            print()
             print("\nSuccessfully created " + str(start) + " to " + str(
                 end) + ", \'" + name + "\' folders in directory: " + path + "\n")
+            print()
             # print success message
         except OSError:
+            print()
             print("Error creating directory.")  # print error message
+            print()
     return
 
 
@@ -227,6 +235,7 @@ def run():
 
         while selection < 1 or selection > 4:
             # while the selection is invalid
+            print()
             print("Please make a valid selection.")
             selection = int(input())
 
