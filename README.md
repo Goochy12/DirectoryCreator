@@ -32,8 +32,8 @@ $ - Represents a space " "
     eg: My$Pictures == My Pictures
     
 ### Example
-!Test$Folder$1
+    !Test$Folder$1
 
-&Week-1-12 !New$Folder ? ?
+    &Week-1-12 !New$Folder ? ?
 
-!TestFolder2 ?
+    !TestFolder2 ?
