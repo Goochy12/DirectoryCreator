@@ -19,7 +19,7 @@ D:\UserData\Documents\Uni_Files
 !Year$3
 !FIT3171_Databases &W-1-12 !Exam ? !Assessments ? ?
 !FIT3080_Intelligent$systems &W-1-12 !Exam ? !Assessments ? ?
-!FIT3077_Software$engineering:$Architecture$and$design &W-1-12 !Exam ? !Assessments ? ?
+!FIT3077_Software$engineering$Architecture$and$design &W-1-12 !Exam ? !Assessments ? ?
 !FIT3143_Parallel$computing &W-1-12 !Exam ? !Assessments ? ?
 !FIT3155_Advanced$data$structures$and$algorithms &W-1-12 !Exam ? !Assessments ? ?
 !FIT3168_IT$forensics &W-1-12 !Exam ? !Assessments ? ?
